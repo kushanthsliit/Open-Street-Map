@@ -12,6 +12,7 @@ Maps.Inject(Zoom, Marker, NavigationLine);
 export class AppComponent {
 
   public layerType: string = 'OSM';
+  
 
   public zoomSettings: object = {
       zoomFactor: 7,
@@ -24,7 +25,7 @@ export class AppComponent {
   };
   
    public markerSettings: object = [{
-       visible: true,
+       visible: false,
        height: 35,
        width: 25,
        dataSource: [
@@ -48,7 +49,7 @@ export class AppComponent {
    public navigationLineSettings: object = [{
        visible: true,
        color: "blue",
-       width: 5,
+       width: 2,
        angle: 0.1,
        latitude: [7.21984, 8.34427, 9.08550],
        longitude: [ 79.84537, 80.41080, 79.82343]
