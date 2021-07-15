@@ -1,8 +1,25 @@
 <div class="container-fluid">
+  <button (click)="popVehicles()">just try</button>
+
   <ejs-maps [layers]='layers' [zoomSettings]='zoomSettings' [centerPosition]='centerPosition'>
       <e-layers>
-        <e-layer [layerType] = 'layerType' [markerSettings]='markerSettings' [navigationLineSettings]='navigationLineSettings'></e-layer>
+        <e-layer [layerType] = 'layerType'
+        [markerSettings]='markerSettings' 
+        [navigationLineSettings]='navigationLineSettings'
+        [dataLabelSettings] = 'dataLabelSettings'></e-layer>
       </e-layers>
   </ejs-maps>
+  <div>
+    <div>
+      <ul>
+        <li *ngFor="let data of vehicleList">
+          {{data.latitude}},
+          {{data.longitude}}
+        </li>
+      </ul>
+    </div>
+  </div>
+ 
+
 </div>
 
