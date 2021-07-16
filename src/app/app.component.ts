@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Maps, Zoom, Marker, NavigationLine, MarkerSettings } from '@syncfusion/ej2-angular-maps';
+import { Component, OnInit, ViewChild  } from '@angular/core';
+import {Maps, Zoom, Marker, NavigationLine, MarkerSettings, MapsComponent } from '@syncfusion/ej2-angular-maps';
 import { LocationService } from '../service/location.service';
 
 import { Ivehicle } from 'src/app/vehiclePoints';
@@ -22,41 +22,49 @@ export class AppComponent implements OnInit {
 
   public layerType: string = 'OSM';
 
-  public vehicleList : Array<Ivehicle> = []
+  // public dataSource : Array<Ivehicle> = []
+  vehicleData : Array<Ivehicle> = [];
+
+  public temp: {
+      latitude: number;
+      longitude: number;
+      VehicleNumber: string;
+  }
+
+  // @ViewChild('drilldown')
+  // public maps : MapsComponent;
 
   isLoaded : boolean = false;
 
   public vehiclePoints: Array<Ivehicle> = 
   [
     {
-        "latitude": "7.252588333",
-        "VehicleNumber": "AU NME-9238",
-        "longitude": "80.04134833"
-    },
-    {
-        "latitude": "7.209031667",
-        "VehicleNumber": "SG VUT-9526",
-        "longitude": "79.93958"
-    },
-    {
-        "latitude": "7.240268333",
-        "VehicleNumber": "EL NIN-7320",
-        "longitude": "80.02631667"
-    }
-]
+      "VehicleNumber": "CP BJE-5182",
+      "latitude": "7.229086667",
+      "longitude": "79.971435"
+  },
+  {
+    "VehicleNumber": "SS AFX-1987",
+      "latitude": "7.211626667",
+      "longitude": "79.943595"
+  },
+  {
+      "VehicleNumber": "FB XAF-1244",
+      "latitude": "7.24194",
+      "longitude": "80.02712667"
+  }
+  ]
   
   ngOnInit(){
     this.getVehiclePoints();
-    console.log("vehicle points " , this.vehiclePoints)
+    // for (var i = 0; i < this.vehicleData.length; i++) {
+    //   this.vehiclePoints.push(this.vehicleData[i])
+    // }
   }
 
   getVehiclePoints(){
-    this.Lservice.getVehicleLocations().subscribe(
-      (data : any[] )=> {
-        this.vehicleList = data;
-        this.isLoaded = true;
-        console.log("api call",data)
-      }
+    return this.Lservice.getVehicleLocations().subscribe(
+      data => this.vehicleData = data
     );
   }
 
@@ -69,10 +77,11 @@ export class AppComponent implements OnInit {
   // }];
   // }
 
-  popVehicles(){
-    this.getVehiclePoints();
-    // console.log("pop vehicles : " , this.vehicleList);
-    // window.location.reload();
+  loadData(){
+    console.log("Marker Settings : ",this.markerSettings);
+    console.log("Vehicle Data : ",this.vehicleData);
+    console.log("Vehicle Points : ", this.vehiclePoints);
+    this.maps.refresh();
   }
 
   public zoomSettings: object = {
@@ -89,7 +98,24 @@ export class AppComponent implements OnInit {
        visible: true,
        height: 35,
        width: 25,
-       dataSource: this.vehicleList
+       dataSource: this.vehicleData
+      //  [
+      //   {
+      //     "latitude": "7.229086667",
+      //     "VehicleNumber": "CP BJE-5182",
+      //     "longitude": "79.971435"
+      // },
+      // {
+      //     "latitude": "7.211626667",
+      //     "VehicleNumber": "SS AFX-1987",
+      //     "longitude": "79.943595"
+      // },
+      // {
+      //     "latitude": "7.24194",
+      //     "VehicleNumber": "FB XAF-1244",
+      //     "longitude": "80.02712667"
+      // }
+      // ]
    }];
 
 

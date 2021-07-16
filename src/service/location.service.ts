@@ -15,14 +15,17 @@ export class LocationService {
   //   return this.http.get<IvehiclePoints[]>("http://localhost:8080/gps/getPoints");
   // }
 
-  getVehicleLocations(){
-    return this.http.get("http://localhost:8080/gps/getPoints").pipe(
-      map((data: Ivehicle[]) => {
-        return data;
-      }), catchError( error => {
-        return throwError( 'Something went wrong!' );
-      })
-   )
-;
+  // getVehicleLocations(){
+  //   return this.http.get("http://localhost:8080/gps/getPoints").pipe(
+  //     map((data: Ivehicle[]) => {
+  //       return data;
+  //     }), catchError( error => {
+  //       return throwError( 'Something went wrong!' );
+  //     })
+  //  );
+  // }
+
+  getVehicleLocations() : Observable<Ivehicle[]>{
+    return this.http.get<Ivehicle[]>("http://localhost:8080/gps/getPoints");
   }
 }

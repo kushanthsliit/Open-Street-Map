@@ -1,14 +1,12 @@
 <div class="container-fluid">
-  <button (click)="popVehicles()">just try</button>
 
-  <ejs-maps [layers]='layers' [zoomSettings]='zoomSettings' [centerPosition]='centerPosition'>
-      <e-layers>
-        <e-layer [layerType] = 'layerType'
-        [markerSettings]='markerSettings' 
-        [navigationLineSettings]='navigationLineSettings'
-        [dataLabelSettings] = 'dataLabelSettings'></e-layer>
-      </e-layers>
-  </ejs-maps>
+  <div>
+    <button (click)="loadData()">Load Datas</button>
+    <hr>
+    <button (click) = "loadMap()">Load Map</button>
+    <hr>
+  </div>
+    
   <div>
     <div>
       <ul>
@@ -19,7 +17,19 @@
       </ul>
     </div>
   </div>
- 
 
+  <hr>
+
+  <div>
+    <ejs-maps [layers]='layers' [zoomSettings]='zoomSettings' [centerPosition]='centerPosition'>
+      <e-layers>
+        <e-layer [layerType] = 'layerType'
+        [markerSettings]='markerSettings' 
+        [navigationLineSettings]='navigationLineSettings'
+        [dataLabelSettings] = 'dataLabelSettings'></e-layer>
+      </e-layers>
+    </ejs-maps>
+  </div>
+  
 </div>
 

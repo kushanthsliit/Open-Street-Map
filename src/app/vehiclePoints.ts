@@ -1,5 +1,5 @@
-export class Ivehicle {
-    latitude:string;
+export interface Ivehicle {
     VehicleNumber:string;
+    latitude:string;
     longitude:string;
 }
