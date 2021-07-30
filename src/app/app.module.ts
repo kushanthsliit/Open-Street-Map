@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { MapsModule } from '@syncfusion/ej2-angular-maps';
 import { LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService, SelectionService, AnnotationsService, ZoomService } from '@syncfusion/ej2-angular-maps';
 import { HttpClientModule } from '@angular/common/http';
-// import { LocationService } from 'src/service/location.service';
 
 @NgModule({
   declarations: [
